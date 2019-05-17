@@ -10,7 +10,8 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 //Informar onde os nosso arquivos de css vão estar no caso a pasta public
-app.use(express.static(path.join(__dirname, 'public')))
+//app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(__dirname + '/public'))
 
 //Definindo a nossa página principal '/'
 app.get('/', (req, res) =>{
