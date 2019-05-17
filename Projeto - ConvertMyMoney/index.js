@@ -20,7 +20,7 @@ app.get('/', (req, res) =>{
 
 //Configuração para rodar no ZEIT
 const port = process.env.PORT || 3000
-
+app.listen(port)
 
 //Definindo a página de cotação
 app.get('/cotacao', (req, res)=>{
@@ -37,14 +37,5 @@ app.get('/cotacao', (req, res)=>{
         res.render('cotacao',{
             error: 'Valores Inválidos!'
         })
-    }
-})
-
-// Criar um servidor local
-app.listen(3000, err =>{
-    if(err){
-        console.log('Erro no servidor...')
-    }else{
-        console.log('Servidor Online')
     }
 })
