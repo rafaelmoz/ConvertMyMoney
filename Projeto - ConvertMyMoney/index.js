@@ -1,4 +1,4 @@
-const express = require('express')
+﻿const express = require('express')
 const app = express()
 const path = require('path')
 const convert = require('./lib/convert')
@@ -16,6 +16,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.get('/', (req, res) =>{
     res.render('home')
 })
+
+
+//Configuração para rodar no ZEIT
+const port = process.env.PORT || 3000
+
 
 //Definindo a página de cotação
 app.get('/cotacao', (req, res)=>{
