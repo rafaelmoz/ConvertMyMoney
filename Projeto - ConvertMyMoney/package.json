@@ -15,5 +15,8 @@
   },
   "devDependencies": {
     "jest": "^24.8.0"
+  },
+  "jest": {
+    "collectCoverage": true
   }
 }

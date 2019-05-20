@@ -2,6 +2,7 @@
 const app = express()
 const path = require('path')
 const convert = require('./lib/convert')
+const apiBCB = require('./lib/api.bcb')
 
 //Setar quem vai ser responsável pela parte das Views, nesse caso o EJS
 app.set('view engine', 'ejs')
@@ -14,12 +15,16 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(__dirname + '/public'))
 
 //Definindo a nossa página principal '/'
-app.get('/', (req, res) =>{
-    res.render('home')
+app.get('/', async(req, res) =>{
+    const cotacao = await apiBCB.getCotacao()
+    console.log('cotacao', cotacao)
+    res.render('home',{
+        cotacao
+    })
 })
 
 
-//Configuração para rodar no ZEIT
+//Configuração para rodar no heroku
 const port = process.env.PORT || 8080
 app.listen(port)
 
